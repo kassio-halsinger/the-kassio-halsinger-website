@@ -1,13 +1,423 @@
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <h1>Kassio Halsinger</h1>
-        <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
-        <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
-        <p>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kassio Halsinger | Portfolio</title>
+    <!-- SF Pro-like Typography via Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Apple-Inspired Minimalist Design System --- */
+        :root {
+            --bg-color: #f5f5f7;
+            --card-bg: #ffffff;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent-blue: #0071e3;
+            --border-color: #d2d2d7;
+            --border-radius: 12px;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Sticky Global Navigation --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(245, 245, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 22px;
+            height: 48px;
+        }
+
+        .nav-brand {
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 12px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: color var(--transition-speed);
+            padding: 8px 0;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            color: var(--text-primary);
+        }
+
+        /* --- Main Content Layout --- */
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 22px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out-back;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* --- Typography & Structural Elements --- */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 40px 0 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        /* --- Resume Components --- */
+        .resume-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .resume-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .role-title {
+            font-size: 17px;
+            font-weight: 600;
+        }
+
+        .company-name {
+            font-size: 14px;
+            color: var(--accent-blue);
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .date-location {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .resume-bullets {
+            padding-left: 18px;
+            font-size: 14px;
+            color: #333336;
+        }
+
+        .resume-bullets li {
+            margin-bottom: 8px;
+        }
+
+        /* --- Badges for Tech Stack --- */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .badge {
+            background: #f5f5f7;
+            color: #515154;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* --- Portfolio Stubs --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            border: 1px solid rgba(0,0,0,0.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .demo-sandbox {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 20px;
+            border: 1px dashed var(--border-color);
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        /* --- Interactive Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 34px; }
+            .resume-header { flex-direction: column; }
+            .date-location { text-align: left; margin-top: 4px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-brand" onclick="switchTab('about')">Kassio Halsinger</div>
+            <ul class="nav-tabs">
+                <li><button class="tab-btn active" onclick="switchTab('about')">About</button></li>
+                <li><button class="tab-btn" onclick="switchTab('resume')">Resume</button></li>
+                <li><button class="tab-btn" onclick="switchTab('portfolio')">Portfolio</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Dynamic Frame -->
+    <main>
+
+        <!-- ================= TAB: ABOUT ================= -->
+        <section id="about" class="tab-content active">
+            <h1>Kassio Halsinger</h1>
+            <p class="subtitle">Technical Project Lead & Data Analyst</p>
+            <div class="resume-item" style="padding: 30px;">
+                <p style="font-size: 17px; color: #333336; margin-bottom: 15px;">
+                    I specialize in bridging the gap between rigorous mathematical optimization and stable, scalable enterprise systems. 
+                </p>
+                <p style="font-size: 15px; color: var(--text-secondary);">
+                    With a background rooted in Applied Mathematics, Computer Science, and risk management framework, I transform complex data architectures into intuitive, automated tools that drive concrete supply chain and operational efficiencies.
+                </p>
+            </div>
+        </section>
+
+        <!-- ================= TAB: RESUME ================= -->
+        <section id="resume" class="tab-content">
+            <h1>Professional Journey</h1>
+            <p class="subtitle">An overview of experience, metrics, and automation achievements.</p>
+
+            <h2>Experience</h2>
+
+            <!-- Job 1: Gutterman's Supply -->
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">Technical Project Lead & Data Analyst</div>
+                        <div class="company-name">Gutterman's Supply</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Nov 2025 – Present</div>
+                        <div>Portland, OR</div>
+                    </div>
+                </div>
+                <ul class="resume-bullets">
+                    <li>Engineered a custom SQL HANA demand forecasting engine covering 300+ SKUs, successfully modernizing legacy operational reporting pipelines.</li>
+                    <li>Collaborated cross-functionally within the technology and management environment as a system operations trainee to scale deployment visibility.</li>
+                    <li>Automated core inventory projections to eliminate repetitive calculating bottlenecks and align stock with regional market demands.</li>
+                </ul>
+                <div class="badge-container">
+                    <span class="badge">SQL HANA</span>
+                    <span class="badge">Demand Forecasting</span>
+                    <span class="badge">ERP Systems</span>
+                    <span class="badge">Process Automation</span>
+                </div>
+            </div>
+
+            <!-- Job 2: Ecumenical Ministries -->
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">Financial Data Analyst</div>
+                        <div class="company-name">Ecumenical Ministries of Oregon</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Apr 2024 – Aug 2025</div>
+                        <div>Portland, OR</div>
+                    </div>
+                </div>
+                <ul class="resume-bullets">
+                    <li>Designed and maintained financial analytical frameworks to track, monitor, and clean programmatic funding allocation data.</li>
+                    <li>Constructed reporting mechanics that accelerated accurate visibility into complex non-profit budget segments and general ledgers.</li>
+                </ul>
+                <div class="badge-container">
+                    <span class="badge">Data Analysis</span>
+                    <span class="badge">Financial Reporting</span>
+                    <span class="badge">Excel/VBA</span>
+                    <span class="badge">Budget Modeling</span>
+                </div>
+            </div>
+
+            <!-- Job 3: Echo Theater -->
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">Interim Financial Manager</div>
+                        <div class="company-name">Echo Theater Company</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Mar 2024 – Sep 2024</div>
+                        <div>Portland, OR</div>
+                    </div>
+                </div>
+                <ul class="resume-bullets">
+                    <li>Managed structural organizational accounting operations, stabilizing reporting routines during leadership transitions.</li>
+                    <li>Standardized inner reporting workflows to ensure consistent data compliance across operational programs.</li>
+                </ul>
+            </div>
+
+            <h2>Education & Credentials</h2>
+            
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">B.S. in Applied Mathematics & Computer Science</div>
+                        <div class="company-name">Western Washington University</div>
+                    </div>
+                    <div class="date-location">Graduated Aug 2022</div>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">Actuarial Credentials</div>
+                        <div class="company-name">Society of Actuaries (SOA)</div>
+                    </div>
+                    <div class="date-location">Certified Candidate</div>
+                </div>
+                <div class="badge-container" style="margin-top: 5px;">
+                    <span class="badge">Exam P (Probability)</span>
+                    <span class="badge">Exam FM (Financial Mathematics)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB: PORTFOLIO ================= -->
+        <section id="portfolio" class="tab-content">
+            <h1>Interactive Projects</h1>
+            <p class="subtitle">Demos showcasing live algorithmic optimization and dashboard engines.</p>
+
+            <div class="portfolio-grid">
+                <!-- Sandbox 1 -->
+                <div class="project-card">
+                    <h3>1. SQL HANA Demand Forecasting Simulator</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 5px;">
+                        An implementation mirroring the logic used to project inventory movements across 300+ SKUs.
+                    </p>
+                    <div class="demo-sandbox">
+                        <strong>[ Sandbox Environment Under Construction ]</strong><br>
+                        <span style="font-size: 11px; display: inline-block; margin-top: 5px;">
+                            Next Step: Integrating dynamic JavaScript sliders to simulate real-time safety stock variance.
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Sandbox 2 -->
+                <div class="project-card">
+                    <h3>2. West Coast Distribution Optimization Model</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 5px;">
+                        A linear programming visualization calculating mathematical minimum-cost routing across coastal transit networks.
+                    </p>
+                    <div class="demo-sandbox">
+                        <strong>[ Sandbox Environment Under Construction ]</strong><br>
+                        <span style="font-size: 11px; display: inline-block; margin-top: 5px;">
+                            Next Step: Embedding HTML Canvas node layouts to display fluid optimization paths.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Simple Tab Swapping Logic -->
+    <script>
+        function switchTab(tabId) {
+            // Deactivate all sections and buttons
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Activate target elements
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find button matching text target to highlight active state
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(tabId)) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Scroll cleanly to the top of the content framework window
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
 </html>

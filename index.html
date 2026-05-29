@@ -34,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
+        /* --- Global Navigation --- */
         nav {
             position: sticky;
             top: 0;
@@ -83,7 +83,46 @@
             color: var(--text-primary);
         }
 
-        /* Layout & Typography */
+        /* --- Sub-Navigation (Resume Tab) --- */
+        .sub-nav-tabs {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .sub-tab-btn {
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color var(--transition-speed);
+            white-space: nowrap;
+        }
+
+        .sub-tab-btn:hover, .sub-tab-btn.active {
+            color: var(--accent-blue);
+        }
+        
+        .sub-tab-btn.active {
+            box-shadow: 0 2px 0 0 var(--accent-blue);
+        }
+
+        .sub-tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .sub-tab-content.active {
+            display: block;
+        }
+
+        /* --- Layout & Typography --- */
         main {
             max-width: 860px;
             margin: 0 auto;
@@ -99,31 +138,12 @@
             display: block;
         }
 
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 8px;
-        }
+        h1 { font-size: 48px; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+        h2 { font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin: 40px 0 20px 0; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        
+        .subtitle { font-size: 21px; color: var(--text-secondary); font-weight: 400; letter-spacing: -0.01em; margin-bottom: 40px; }
 
-        .subtitle {
-            font-size: 21px;
-            color: var(--text-secondary);
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin: 40px 0 20px 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        /* Resume Cards & Hover Effects */
+        /* --- Standard Resume Items --- */
         .resume-item {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -134,98 +154,77 @@
             transition: box-shadow var(--transition-speed);
         }
 
-        .resume-item:hover {
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        .resume-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+
+        .resume-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .role-title { font-size: 17px; font-weight: 600; }
+        .company-name { font-size: 14px; color: var(--accent-blue); font-weight: 500; margin-top: 2px; }
+        .date-location { font-size: 13px; color: var(--text-secondary); text-align: right; }
+
+        /* --- Course Grid (Education Section) --- */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
         }
 
-        .resume-header {
+        .course-card {
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s;
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+            flex-direction: column;
         }
 
-        .role-title {
-            font-size: 17px;
-            font-weight: 600;
-        }
-
-        .company-name {
-            font-size: 14px;
-            color: var(--accent-blue);
-            font-weight: 500;
-            margin-top: 2px;
-        }
-
-        .date-location {
-            font-size: 13px;
-            color: var(--text-secondary);
-            text-align: right;
-        }
-
+        .course-card:hover { box-shadow: 0 6px 16px rgba(0,0,0,0.06); }
+        
+        .course-header { display: flex; justify-content: space-between; align-items: flex-start; width: 100%; }
+        .course-title { font-weight: 600; font-size: 14px; color: #1d1d1f; }
+        .course-grade { color: var(--accent-blue); font-size: 13px; font-weight: 600; background: #f0f7ff; padding: 2px 8px; border-radius: 12px; }
+        
         /* Expandable Details */
-        .hover-hint {
-            font-size: 12px;
-            color: var(--text-secondary);
-            margin-top: 8px;
-            display: inline-block;
-            font-style: italic;
-            transition: opacity 0.2s;
-        }
-
-        .job-details {
+        .hover-hint { font-size: 12px; color: var(--text-secondary); margin-top: 8px; display: inline-block; font-style: italic; transition: opacity 0.2s; }
+        
+        .job-details, .course-details {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
             transition: all var(--transition-speed) ease;
         }
 
-        .resume-item:hover .job-details {
-            max-height: 2000px; /* Generous height for expanded content */
+        .resume-item:hover .job-details, .course-card:hover .course-details {
+            max-height: 2000px;
             opacity: 1;
             margin-top: 16px;
             padding-top: 16px;
             border-top: 1px solid var(--border-color);
         }
 
-        .resume-item:hover .hover-hint {
-            display: none;
-        }
+        .resume-item:hover .hover-hint, .course-card:hover .hover-hint { display: none; }
 
-        .resume-bullets {
-            padding-left: 18px;
-            font-size: 14px;
-            color: #333336;
-        }
+        .course-details p { font-size: 13px; color: #333336; line-height: 1.5; }
+        .course-details strong { color: var(--text-primary); font-weight: 600; }
 
-        .resume-bullets li {
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
-
-        .resume-bullets u {
-            font-weight: 600;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 2px;
-        }
+        .resume-bullets { padding-left: 18px; font-size: 14px; color: #333336; }
+        .resume-bullets li { margin-bottom: 12px; line-height: 1.6; }
+        .resume-bullets u { font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 2px; }
 
         /* Badges */
-        .badge-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .badge {
-            background: #f5f5f7;
-            color: #515154;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-        }
+        .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .badge { background: #f5f5f7; color: #515154; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; }
 
         /* Portfolio */
+        .portfolio-summary {
+            background: #f0f7ff;
+            border: 1px solid #cce4ff;
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
         .pdf-viewer {
             width: 100%;
             height: 75vh;
@@ -243,14 +242,15 @@
             h1 { font-size: 34px; }
             .resume-header { flex-direction: column; }
             .date-location { text-align: left; margin-top: 4px; }
-            /* Auto-expand details on mobile since hover is unavailable */
-            .job-details { max-height: none; opacity: 1; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
+            .job-details, .course-details { max-height: none; opacity: 1; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
             .hover-hint { display: none; }
+            .course-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Sticky Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="nav-brand" onclick="switchTab('about')">Kassio Halsinger</div>
@@ -263,7 +263,7 @@
     </nav>
 
     <main>
-
+        <!-- ================= TAB: ABOUT ================= -->
         <section id="about" class="tab-content active">
             <h1>Kassio Halsinger</h1>
             <p class="subtitle">Technical Project Lead & Data Analyst</p>
@@ -277,202 +277,292 @@
             </div>
         </section>
 
+        <!-- ================= TAB: RESUME ================= -->
         <section id="resume" class="tab-content">
             <h1>Professional Journey</h1>
-            <p class="subtitle">An overview of experience, metrics, and automation achievements.</p>
+            <p class="subtitle">An overview of experience, education, and analytical foundations.</p>
 
-            <h2>Data Analysis & Operations Experience</h2>
+            <!-- Sub-Navigation for Resume -->
+            <div class="sub-nav-tabs">
+                <button class="sub-tab-btn active" onclick="switchSubTab('resume-professional')">Professional Experience</button>
+                <button class="sub-tab-btn" onclick="switchSubTab('resume-tutoring')">Tutoring Experience</button>
+                <button class="sub-tab-btn" onclick="switchSubTab('resume-education')">Education & Coursework</button>
+            </div>
 
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">Technical Project Lead, Purchasing Specialist & Data Analyst</div>
-                        <div class="company-name">Gutterman's Supply</div>
+            <!-- SUB-TAB: PROFESSIONAL EXPERIENCE -->
+            <div id="resume-professional" class="sub-tab-content active">
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Technical Project Lead, Purchasing Specialist & Data Analyst</div>
+                            <div class="company-name">Gutterman's Supply</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Aug 2025 – Apr 2026</div>
+                            <div>Portland, OR</div>
+                        </div>
                     </div>
-                    <div class="date-location">
-                        <div>Aug 2025 – Apr 2026</div>
-                        <div>Portland, OR</div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Forecasting & Purchasing Automation:</u> Engineered a custom SQL HANA demand forecasting engine within SAP B1, automating inventory projections for over 300 SKUs. Managed end-to-end purchasing and negotiated volume discounts to significantly lower COGS.</li>
+                            <li><u>Dashboard Architecture:</u> Developed advanced analytical dashboards in SAP B1, including comprehensive sales tracking and a multi-tiered purchasing management system that mathematically modeled organizational growth and seasonality.</li>
+                            <li><u>System Customization & Optimization:</u> Served as the internal technical lead executing SAP debugging, SQL HANA query writing, and system customizations, substantially reducing the necessity for external IT consulting expenditures.</li>
+                            <li><u>Large-Scale Data Generation:</u> Authored Python scripts leveraging Cartesian products to dynamically generate and structure over 28,000 new SKUs and product descriptions for a new roofing panel manufacturing line.</li>
+                            <li><u>Modernization & Process Mapping:</u> Designed a comprehensive roadmap for warehouse modernization, evaluating WMS software and barcoding hardware while meticulously mapping end-to-end data flows and inventory controls.</li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">SQL HANA</span>
+                        <span class="badge">SAP B1</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">Process Automation</span>
                     </div>
                 </div>
-                <span class="hover-hint">Hover to expand details</span>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Financial Analyst (Promoted from Finance Assistant)</div>
+                            <div class="company-name">Ecumenical Ministries of Oregon</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Apr 2024 – Aug 2025</div>
+                            <div>Portland, OR</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Tracking System Modernization:</u> Redesigned and automated the employee and member health plan tracking system using interconnected spreadsheets and advanced VBA, drastically improving AR invoice accuracy and generation speed.</li>
+                            <li><u>Forensic Reconciliation:</u> Conducted deep-dive audits of historical enrollment data alongside AP and AR invoices, identifying and resolving systemic discrepancies to restore precise ledger compliance.</li>
+                            <li><u>Compliance Documentation:</u> Authored a comprehensive 50+ page SOP manual for financial data entry and insurance administration, ensuring strict organizational adherence and facilitating rapid employee training.</li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">Data Analysis</span>
+                        <span class="badge">Excel/VBA</span>
+                        <span class="badge">Financial Reporting</span>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Interim Financial Manager</div>
+                            <div class="company-name">Echo Theater Company</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Mar 2024 – Oct 2024</div>
+                            <div>Portland, OR</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>GAAP Standardization:</u> Collaborated closely with a CPA consultant to completely redesign the Chart of Accounts and program organization structure, ensuring rigorous adherence to GAAP.</li>
+                            <li><u>Accounts Receivable Automation:</u> Mapped and automated transaction flows from the Uplifter order management software directly into QuickBooks Online, eliminating approximately 8 hours of manual data entry per month.</li>
+                            <li><u>Payroll Integration:</u> Engineered an automated API pipeline between Paychex and QuickBooks Online, auto-populating journal entries and streamlining the bi-weekly payroll accounting process.</li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">QuickBooks Online</span>
+                        <span class="badge">Process Mapping</span>
+                        <span class="badge">GAAP Compliance</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB: TUTORING EXPERIENCE -->
+            <div id="resume-tutoring" class="sub-tab-content">
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Instruction & Tutoring Roles</div>
+                            <div class="company-name">Various Institutions</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Prior to 2024</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Educational Leadership:</u> Comprehensive details regarding specialized instruction, complex concept translation, and tutoring experience will be populated here as requested.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB: EDUCATION -->
+            <div id="resume-education" class="sub-tab-content">
                 
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>Forecasting & Purchasing Automation:</u> Engineered a custom SQL HANA demand forecasting engine within SAP B1, automating inventory projections for over 300 SKUs. Managed end-to-end purchasing and negotiated volume discounts to significantly lower COGS.</li>
-                        <li><u>Dashboard Architecture:</u> Developed advanced analytical dashboards in SAP B1, including comprehensive sales tracking and a multi-tiered purchasing management system that mathematically modeled organizational growth and seasonality.</li>
-                        <li><u>System Customization & Optimization:</u> Served as the internal technical lead executing SAP debugging, SQL HANA query writing, and system customizations, substantially reducing the necessity for external IT consulting expenditures.</li>
-                        <li><u>Large-Scale Data Generation:</u> Authored Python scripts leveraging Cartesian products to dynamically generate and structure over 28,000 new SKUs and product descriptions for a new roofing panel manufacturing line.</li>
-                        <li><u>Modernization & Process Mapping:</u> Designed a comprehensive roadmap for warehouse modernization, evaluating WMS software and barcoding hardware while meticulously mapping end-to-end data flows and inventory controls.</li>
-                    </ul>
-                </div>
-
-                <div class="badge-container">
-                    <span class="badge">SQL HANA</span>
-                    <span class="badge">Demand Forecasting</span>
-                    <span class="badge">SAP B1</span>
-                    <span class="badge">Process Automation</span>
-                    <span class="badge">Python</span>
-                </div>
-            </div>
-
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">Financial Analyst (Promoted from Finance Assistant)</div>
-                        <div class="company-name">Ecumenical Ministries of Oregon</div>
+                <div class="resume-item" style="padding-bottom: 12px; margin-bottom: 0; box-shadow: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none;">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">B.S. Mathematics/Computer Science & Applied Mathematics</div>
+                            <div class="company-name">Western Washington University (WWU) | GPA: 3.82 | Graduated Aug 2022</div>
+                        </div>
                     </div>
-                    <div class="date-location">
-                        <div>Apr 2024 – Aug 2025</div>
-                        <div>Portland, OR</div>
+                    <div style="margin-top: 10px; font-size: 13px; color: var(--text-secondary);">
+                        Graduated with Distinction in Mathematics. Completed Senior Thesis Research proving the Heisenberg Uncertainty Principle via Fourier Analysis. Passed the rigorous WWU Mathematics Comprehensive Exam on the first attempt.
                     </div>
                 </div>
-                <span class="hover-hint">Hover to expand details</span>
-
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>Tracking System Modernization:</u> Redesigned and automated the employee and member health plan tracking system using interconnected spreadsheets and advanced VBA, drastically improving AR invoice accuracy and generation speed.</li>
-                        <li><u>Forensic Reconciliation:</u> Conducted deep-dive audits of historical enrollment data alongside AP and AR invoices, identifying and resolving systemic discrepancies to restore precise ledger compliance.</li>
-                        <li><u>Compliance Documentation:</u> Authored a comprehensive 50+ page SOP manual for financial data entry and insurance administration, ensuring strict organizational adherence and facilitating rapid employee training.</li>
-                        <li><u>Accounts Payable Management:</u> Executed complex AP workflows, rigorously verifying invoices, managing weekly check runs, and ensuring flawless allocation of programmatic funding across diverse non-profit segments.</li>
-                    </ul>
-                </div>
-
-                <div class="badge-container">
-                    <span class="badge">Data Analysis</span>
-                    <span class="badge">Financial Reporting</span>
-                    <span class="badge">Excel/VBA</span>
-                    <span class="badge">SOP Authoring</span>
-                </div>
-            </div>
-
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">Interim Financial Manager</div>
-                        <div class="company-name">Echo Theater Company</div>
+                <div class="resume-item" style="padding-top: 0; box-shadow: none; border-top-left-radius: 0; border-top-right-radius: 0; border-top: none;">
+                     <div class="resume-header" style="margin-top: 16px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                        <div>
+                            <div class="role-title">A.A. Direct Transfer Degree, Mathematics</div>
+                            <div class="company-name">Clark College | GPA: 3.8 | Graduated Jun 2019</div>
+                        </div>
                     </div>
-                    <div class="date-location">
-                        <div>Mar 2024 – Oct 2024</div>
-                        <div>Portland, OR</div>
+                    <div style="margin-top: 10px; font-size: 13px; color: var(--text-secondary);">
+                        Graduated with Honors. Accelerated Track completed concurrently during high school via the Running Start Program.
                     </div>
                 </div>
-                <span class="hover-hint">Hover to expand details</span>
 
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>GAAP Standardization:</u> Collaborated closely with a CPA consultant to completely redesign the Chart of Accounts and program organization structure, ensuring rigorous adherence to Generally Accepted Accounting Principles (GAAP).</li>
-                        <li><u>Accounts Receivable Automation:</u> Mapped and automated transaction flows from the Uplifter order management software directly into QuickBooks Online, eliminating approximately 8 hours of manual data entry per month.</li>
-                        <li><u>Payroll Integration:</u> Engineered an automated API pipeline between Paychex and QuickBooks Online, auto-populating journal entries and streamlining the bi-weekly payroll accounting process.</li>
-                        <li><u>Financial Reporting & Discrepancy Resolution:</u> Produced and presented comprehensive monthly financial reports (Statement of Activities, Statement of Financial Position) to executive leadership, serving as the primary point of contact for resolving complex transaction discrepancies.</li>
-                    </ul>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 30px 0 10px 0;">Analytical Foundations (Core Coursework)</h3>
+                <p style="font-size: 14px; color: var(--text-secondary);">A selection of rigorous academic classes and how their mathematical principles translate directly to modern data science and operational efficiency.</p>
+                
+                <div class="course-grid">
+                    <!-- Core Analytical Courses -->
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">MATH 304 & 215: Linear Algebra</div>
+                            <div class="course-grade">A- / A</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Linear algebra is the mathematical engine powering modern data science and machine learning. Understanding matrices and vectors allows for the efficient manipulation of massive datasets, multi-variable demand forecasting, and structural database querying.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">M/CS 335: Linear Optimization</div>
+                            <div class="course-grade">A</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Directly translates to supply chain and logistical modeling. This is the math used to minimize costs (like shipping routes) or maximize profits under strict constraints (like warehouse capacity and budget).</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">CSCI 305 & 405: Algorithm Analysis</div>
+                            <div class="course-grade">A / A</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Teaches how to evaluate computational efficiency. In an enterprise environment, this ensures that the data engines and scripts I build (like SQL queries or Python scripts) run in seconds rather than crashing the system when scaling to millions of rows.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">MATH 441 & 442: Probability & Math Statistics</div>
+                            <div class="course-grade">B+ / A-</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> The bedrock of risk management and predictive modeling. This coursework provided the deep statistical intuition required to pass Actuarial exams and allows me to build forecasting models that accurately account for uncertainty and variance in the real world.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">MATH 221: Differential Equations</div>
+                            <div class="course-grade">A</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Useful for modeling continuous changes over time, such as tracking inventory velocity, modeling financial decay, and predicting dynamic system behavior in changing markets.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">CSCI 241 & 345: Data Structures & OOP</div>
+                            <div class="course-grade">A / A-</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Ensures that the automated tools and software architectures I build are stable, modular, and maintainable. It bridges the gap between writing a one-off "hacky" script and developing reliable enterprise software.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">MATH 307 & M/CS 375: Math Computing</div>
+                            <div class="course-grade">A / A-</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Hands-on experience executing complex mathematical modeling using computational software. This is the direct precursor to doing heavy data extraction, transformation, and numerical visualization in languages like Python.</p>
+                        </div>
+                    </div>
+
+                    <div class="course-card">
+                        <div class="course-header">
+                            <div class="course-title">Calculus Sequence (I-IV, Limits)</div>
+                            <div class="course-grade">A / A-</div>
+                        </div>
+                        <span class="hover-hint">Hover for data analysis relevance</span>
+                        <div class="course-details">
+                            <p><strong>Relevance to Data Analysis:</strong> Multi-variable calculus (Math 254/226) is the foundational mechanic for "gradient descent," which is how machine learning models and predictive algorithms train themselves to find the most accurate answers by minimizing errors over time.</p>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="badge-container">
-                    <span class="badge">GAAP Compliance</span>
-                    <span class="badge">QuickBooks Online</span>
-                    <span class="badge">Process Mapping</span>
-                    <span class="badge">Financial Reporting</span>
-                </div>
-            </div>
-
-            <h2>Tutoring & Education Experience</h2>
-            
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">Instruction & Tutoring Roles</div>
-                        <div class="company-name">Various Institutions</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Prior to 2024</div>
-                    </div>
-                </div>
-                <span class="hover-hint">Hover to expand details</span>
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>Educational Leadership:</u> Comprehensive details regarding specialized instruction, complex concept translation, and tutoring experience will be populated here.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h2>Education & Credentials</h2>
-            
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">B.S. Mathematics/Computer Science & Applied Mathematics</div>
-                        <div class="company-name">Western Washington University</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Aug 2022</div>
-                        <div>GPA: 3.82</div>
-                    </div>
-                </div>
-                <span class="hover-hint">Hover to expand details</span>
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>Academic Excellence:</u> Graduated with Distinction in Mathematics. Received Admission with Distinction, the Westcott Scholarship, the Mathematics Memorial Scholarship, and a Full Tuition Waiver.</li>
-                        <li><u>Senior Thesis Research:</u> Completed and defended a senior project proving the Heisenberg Uncertainty Principle via Fourier Analysis.</li>
-                        <li><u>Comprehensive Examination:</u> Passed the highly rigorous WWU Mathematics Comprehensive Exam on the first attempt, testing deep conceptual understanding across multi-variable calculus, linear algebra, and differential equations.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">A.A. Direct Transfer Degree, Mathematics</div>
-                        <div class="company-name">Clark College</div>
-                    </div>
-                    <div class="date-location">
-                        <div>Jun 2019</div>
-                        <div>GPA: 3.8</div>
-                    </div>
-                </div>
-                <span class="hover-hint">Hover to expand details</span>
-                <div class="job-details">
-                    <ul class="resume-bullets">
-                        <li><u>Accelerated Track:</u> Completed rigorous college-level engineering, physics, and calculus coursework concurrently during high school via the Running Start Program.</li>
-                        <li><u>Honors & Awards:</u> Graduated with Honors. Achieved 4 Terms on the Vice President’s List (Honor Roll) and membership in the Phi Theta Kappa Honor Society.</li>
+                <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 10px 0;">Broad Interdisciplinary Coursework</h3>
+                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">A selection of diverse academic classes demonstrating well-rounded capabilities in physical sciences, communication, and humanities.</p>
+                
+                <div style="column-count: 2; column-gap: 40px; font-size: 13px; color: #333;">
+                    <ul style="list-style-type: none; padding: 0;">
+                        <li style="margin-bottom: 8px;"><strong>PHYS 162, 231-242:</strong> Engineering Physics Sequence <span style="color: var(--accent-blue);">(A / B+)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>CHEM 141-151:</strong> General Chemistry & Lab <span style="color: var(--accent-blue);">(A / A-)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>ENGR 107, 109, 208, 214:</strong> Aerospace & Engineering <span style="color: var(--accent-blue);">(A / B)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>ECON 201:</strong> Micro Economics <span style="color: var(--accent-blue);">(A)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>CMST 230:</strong> Small Group Communication <span style="color: var(--accent-blue);">(A)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>ENGL 101, 102, 262:</strong> Comp. & World Literature <span style="color: var(--accent-blue);">(A / A-)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>HIST 214 & SOC 101:</strong> History & Sociology <span style="color: var(--accent-blue);">(A)</span></li>
+                        <li style="margin-bottom: 8px;"><strong>MUSC 135, 195-297:</strong> Jazz Ensemble & Appreciation <span style="color: var(--accent-blue);">(A)</span></li>
                     </ul>
                 </div>
             </div>
-
-            <div class="resume-item">
-                <div class="resume-header">
-                    <div>
-                        <div class="role-title">Actuarial Credentials</div>
-                        <div class="company-name">Society of Actuaries (SOA)</div>
-                    </div>
-                    <div class="date-location">Passed 2023</div>
-                </div>
-                <div class="badge-container" style="margin-top: 8px;">
-                    <span class="badge">Exam P (Probability) - Jul 2023</span>
-                    <span class="badge">Exam FM (Financial Mathematics) - Aug 2023</span>
-                </div>
-            </div>
-
         </section>
 
+        <!-- ================= TAB: PORTFOLIO ================= -->
         <section id="portfolio" class="tab-content">
             <h1>Completed Projects</h1>
             <p class="subtitle">A selection of rigorous academic research and technical documentation.</p>
 
             <div class="resume-item" style="padding: 0; overflow: hidden;">
                 <div style="padding: 24px; border-bottom: 1px solid var(--border-color);">
-                    <h3 style="font-size: 18px; font-weight: 600;">Proving the Heisenberg Uncertainty Principle via Fourier Analysis</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">
+                    <h3 style="font-size: 18px; font-weight: 600;">Fourier Series, the Fourier Transform and its applications for the Heisenberg Uncertainty Principle and the Radon Transform</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px; margin-bottom: 16px;">
                         Senior Thesis Research Project | Western Washington University
                     </p>
+                    
+                    <div class="portfolio-summary">
+                        <h4 style="font-size: 14px; color: #1d1d1f; margin-bottom: 8px;">Why this matters for Data Analysis:</h4>
+                        <p style="font-size: 13px; color: #333336; line-height: 1.6;">
+                            While this research is highly theoretical, the underlying mathematics are the exact mechanics used to clean, parse, and analyze messy real-world data. The <strong>Fourier Transform</strong> is used to take a complicated, chaotic signal—like years of fluctuating sales history—and break it apart into clear, predictable patterns, allowing analysts to accurately isolate seasonality from base growth. 
+                            <br><br>
+                            Similarly, the <strong>Radon Transform</strong> is the mathematical logic utilized in CAT scans. It demonstrates an advanced ability to take limited fragments of data from multiple different angles and computationally reconstruct a complete, accurate, multi-dimensional picture. This project proves an advanced capability to mathematically isolate signal from noise, a critical skill for building reliable forecasting engines and complex operational models.
+                        </p>
+                    </div>
                 </div>
-                <iframe class="pdf-viewer" src="senior_project.pdf" title="Senior Thesis PDF Viewer"></iframe>
+                
+                <!-- Independent PDF Viewer -->
+                <iframe class="pdf-viewer" src="senior_project.pdf" title="Senior Thesis PDF Viewer" style="border: none;"></iframe>
             </div>
-            
         </section>
 
     </main>
 
     <script>
+        // Main Tab Switcher
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -487,6 +577,21 @@
             });
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Sub-Tab Switcher for Resume
+        function switchSubTab(subTabId) {
+            document.querySelectorAll('.sub-tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.sub-tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(subTabId).classList.add('active');
+            
+            const buttons = document.querySelectorAll('.sub-tab-btn');
+            buttons.forEach(btn => {
+                if(btn.getAttribute('onclick').includes(subTabId)) {
+                    btn.classList.add('active');
+                }
+            });
         }
     </script>
 </body>

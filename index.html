@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kassio Halsinger | Portfolio</title>
-    <!-- SF Pro-like Typography via Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Apple-Inspired Minimalist Design System --- */
         :root {
             --bg-color: #f5f5f7;
             --card-bg: #ffffff;
@@ -19,7 +17,7 @@
             --accent-blue: #0071e3;
             --border-color: #d2d2d7;
             --border-radius: 12px;
-            --transition-speed: 0.3s;
+            --transition-speed: 0.4s;
         }
 
         * {
@@ -36,7 +34,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Sticky Global Navigation --- */
+        /* Navigation */
         nav {
             position: sticky;
             top: 0;
@@ -85,9 +83,9 @@
             color: var(--text-primary);
         }
 
-        /* --- Main Content Layout --- */
+        /* Layout & Typography */
         main {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
             padding: 60px 22px;
         }
@@ -101,7 +99,6 @@
             display: block;
         }
 
-        /* --- Typography & Structural Elements --- */
         h1 {
             font-size: 48px;
             font-weight: 700;
@@ -126,7 +123,7 @@
             padding-bottom: 10px;
         }
 
-        /* --- Resume Components --- */
+        /* Resume Cards & Hover Effects */
         .resume-item {
             background: var(--card-bg);
             border-radius: var(--border-radius);
@@ -134,13 +131,17 @@
             margin-bottom: 16px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             border: 1px solid rgba(0,0,0,0.02);
+            transition: box-shadow var(--transition-speed);
+        }
+
+        .resume-item:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
         }
 
         .resume-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
         }
 
         .role-title {
@@ -161,6 +162,35 @@
             text-align: right;
         }
 
+        /* Expandable Details */
+        .hover-hint {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            display: inline-block;
+            font-style: italic;
+            transition: opacity 0.2s;
+        }
+
+        .job-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .resume-item:hover .job-details {
+            max-height: 2000px; /* Generous height for expanded content */
+            opacity: 1;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .resume-item:hover .hover-hint {
+            display: none;
+        }
+
         .resume-bullets {
             padding-left: 18px;
             font-size: 14px;
@@ -168,10 +198,17 @@
         }
 
         .resume-bullets li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            line-height: 1.6;
         }
 
-        /* --- Badges for Tech Stack --- */
+        .resume-bullets u {
+            font-weight: 600;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+        }
+
+        /* Badges */
         .badge-container {
             display: flex;
             flex-wrap: wrap;
@@ -188,33 +225,15 @@
             font-weight: 500;
         }
 
-        /* --- Portfolio Stubs --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .project-card {
-            background: var(--card-bg);
+        /* Portfolio */
+        .pdf-viewer {
+            width: 100%;
+            height: 75vh;
+            border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
-            padding: 30px;
-            border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            background: var(--card-bg);
         }
 
-        .demo-sandbox {
-            background: var(--bg-color);
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 20px;
-            border: 1px dashed var(--border-color);
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-
-        /* --- Interactive Animation --- */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
@@ -224,12 +243,14 @@
             h1 { font-size: 34px; }
             .resume-header { flex-direction: column; }
             .date-location { text-align: left; margin-top: 4px; }
+            /* Auto-expand details on mobile since hover is unavailable */
+            .job-details { max-height: none; opacity: 1; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border-color); }
+            .hover-hint { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="nav-brand" onclick="switchTab('about')">Kassio Halsinger</div>
@@ -241,10 +262,8 @@
         </div>
     </nav>
 
-    <!-- Main Dynamic Frame -->
     <main>
 
-        <!-- ================= TAB: ABOUT ================= -->
         <section id="about" class="tab-content active">
             <h1>Kassio Halsinger</h1>
             <p class="subtitle">Technical Project Lead & Data Analyst</p>
@@ -253,48 +272,53 @@
                     I specialize in bridging the gap between rigorous mathematical optimization and stable, scalable enterprise systems. 
                 </p>
                 <p style="font-size: 15px; color: var(--text-secondary);">
-                    With a background rooted in Applied Mathematics, Computer Science, and risk management framework, I transform complex data architectures into intuitive, automated tools that drive concrete supply chain and operational efficiencies.
+                    With a background rooted in Applied Mathematics, Computer Science, and risk management frameworks, I transform complex data architectures into intuitive, automated tools that drive concrete supply chain and operational efficiencies.
                 </p>
             </div>
         </section>
 
-        <!-- ================= TAB: RESUME ================= -->
         <section id="resume" class="tab-content">
             <h1>Professional Journey</h1>
             <p class="subtitle">An overview of experience, metrics, and automation achievements.</p>
 
-            <h2>Experience</h2>
+            <h2>Data Analysis & Operations Experience</h2>
 
-            <!-- Job 1: Gutterman's Supply -->
             <div class="resume-item">
                 <div class="resume-header">
                     <div>
-                        <div class="role-title">Technical Project Lead & Data Analyst</div>
+                        <div class="role-title">Technical Project Lead, Purchasing Specialist & Data Analyst</div>
                         <div class="company-name">Gutterman's Supply</div>
                     </div>
                     <div class="date-location">
-                        <div>Nov 2025 – Present</div>
+                        <div>Aug 2025 – Apr 2026</div>
                         <div>Portland, OR</div>
                     </div>
                 </div>
-                <ul class="resume-bullets">
-                    <li>Engineered a custom SQL HANA demand forecasting engine covering 300+ SKUs, successfully modernizing legacy operational reporting pipelines.</li>
-                    <li>Collaborated cross-functionally within the technology and management environment as a system operations trainee to scale deployment visibility.</li>
-                    <li>Automated core inventory projections to eliminate repetitive calculating bottlenecks and align stock with regional market demands.</li>
-                </ul>
+                <span class="hover-hint">Hover to expand details</span>
+                
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>Forecasting & Purchasing Automation:</u> Engineered a custom SQL HANA demand forecasting engine within SAP B1, automating inventory projections for over 300 SKUs. Managed end-to-end purchasing and negotiated volume discounts to significantly lower COGS.</li>
+                        <li><u>Dashboard Architecture:</u> Developed advanced analytical dashboards in SAP B1, including comprehensive sales tracking and a multi-tiered purchasing management system that mathematically modeled organizational growth and seasonality.</li>
+                        <li><u>System Customization & Optimization:</u> Served as the internal technical lead executing SAP debugging, SQL HANA query writing, and system customizations, substantially reducing the necessity for external IT consulting expenditures.</li>
+                        <li><u>Large-Scale Data Generation:</u> Authored Python scripts leveraging Cartesian products to dynamically generate and structure over 28,000 new SKUs and product descriptions for a new roofing panel manufacturing line.</li>
+                        <li><u>Modernization & Process Mapping:</u> Designed a comprehensive roadmap for warehouse modernization, evaluating WMS software and barcoding hardware while meticulously mapping end-to-end data flows and inventory controls.</li>
+                    </ul>
+                </div>
+
                 <div class="badge-container">
                     <span class="badge">SQL HANA</span>
                     <span class="badge">Demand Forecasting</span>
-                    <span class="badge">ERP Systems</span>
+                    <span class="badge">SAP B1</span>
                     <span class="badge">Process Automation</span>
+                    <span class="badge">Python</span>
                 </div>
             </div>
 
-            <!-- Job 2: Ecumenical Ministries -->
             <div class="resume-item">
                 <div class="resume-header">
                     <div>
-                        <div class="role-title">Financial Data Analyst</div>
+                        <div class="role-title">Financial Analyst (Promoted from Finance Assistant)</div>
                         <div class="company-name">Ecumenical Ministries of Oregon</div>
                     </div>
                     <div class="date-location">
@@ -302,19 +326,25 @@
                         <div>Portland, OR</div>
                     </div>
                 </div>
-                <ul class="resume-bullets">
-                    <li>Designed and maintained financial analytical frameworks to track, monitor, and clean programmatic funding allocation data.</li>
-                    <li>Constructed reporting mechanics that accelerated accurate visibility into complex non-profit budget segments and general ledgers.</li>
-                </ul>
+                <span class="hover-hint">Hover to expand details</span>
+
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>Tracking System Modernization:</u> Redesigned and automated the employee and member health plan tracking system using interconnected spreadsheets and advanced VBA, drastically improving AR invoice accuracy and generation speed.</li>
+                        <li><u>Forensic Reconciliation:</u> Conducted deep-dive audits of historical enrollment data alongside AP and AR invoices, identifying and resolving systemic discrepancies to restore precise ledger compliance.</li>
+                        <li><u>Compliance Documentation:</u> Authored a comprehensive 50+ page SOP manual for financial data entry and insurance administration, ensuring strict organizational adherence and facilitating rapid employee training.</li>
+                        <li><u>Accounts Payable Management:</u> Executed complex AP workflows, rigorously verifying invoices, managing weekly check runs, and ensuring flawless allocation of programmatic funding across diverse non-profit segments.</li>
+                    </ul>
+                </div>
+
                 <div class="badge-container">
                     <span class="badge">Data Analysis</span>
                     <span class="badge">Financial Reporting</span>
                     <span class="badge">Excel/VBA</span>
-                    <span class="badge">Budget Modeling</span>
+                    <span class="badge">SOP Authoring</span>
                 </div>
             </div>
 
-            <!-- Job 3: Echo Theater -->
             <div class="resume-item">
                 <div class="resume-header">
                     <div>
@@ -322,14 +352,47 @@
                         <div class="company-name">Echo Theater Company</div>
                     </div>
                     <div class="date-location">
-                        <div>Mar 2024 – Sep 2024</div>
+                        <div>Mar 2024 – Oct 2024</div>
                         <div>Portland, OR</div>
                     </div>
                 </div>
-                <ul class="resume-bullets">
-                    <li>Managed structural organizational accounting operations, stabilizing reporting routines during leadership transitions.</li>
-                    <li>Standardized inner reporting workflows to ensure consistent data compliance across operational programs.</li>
-                </ul>
+                <span class="hover-hint">Hover to expand details</span>
+
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>GAAP Standardization:</u> Collaborated closely with a CPA consultant to completely redesign the Chart of Accounts and program organization structure, ensuring rigorous adherence to Generally Accepted Accounting Principles (GAAP).</li>
+                        <li><u>Accounts Receivable Automation:</u> Mapped and automated transaction flows from the Uplifter order management software directly into QuickBooks Online, eliminating approximately 8 hours of manual data entry per month.</li>
+                        <li><u>Payroll Integration:</u> Engineered an automated API pipeline between Paychex and QuickBooks Online, auto-populating journal entries and streamlining the bi-weekly payroll accounting process.</li>
+                        <li><u>Financial Reporting & Discrepancy Resolution:</u> Produced and presented comprehensive monthly financial reports (Statement of Activities, Statement of Financial Position) to executive leadership, serving as the primary point of contact for resolving complex transaction discrepancies.</li>
+                    </ul>
+                </div>
+
+                <div class="badge-container">
+                    <span class="badge">GAAP Compliance</span>
+                    <span class="badge">QuickBooks Online</span>
+                    <span class="badge">Process Mapping</span>
+                    <span class="badge">Financial Reporting</span>
+                </div>
+            </div>
+
+            <h2>Tutoring & Education Experience</h2>
+            
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">Instruction & Tutoring Roles</div>
+                        <div class="company-name">Various Institutions</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Prior to 2024</div>
+                    </div>
+                </div>
+                <span class="hover-hint">Hover to expand details</span>
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>Educational Leadership:</u> Comprehensive details regarding specialized instruction, complex concept translation, and tutoring experience will be populated here.</li>
+                    </ul>
+                </div>
             </div>
 
             <h2>Education & Credentials</h2>
@@ -337,10 +400,41 @@
             <div class="resume-item">
                 <div class="resume-header">
                     <div>
-                        <div class="role-title">B.S. in Applied Mathematics & Computer Science</div>
+                        <div class="role-title">B.S. Mathematics/Computer Science & Applied Mathematics</div>
                         <div class="company-name">Western Washington University</div>
                     </div>
-                    <div class="date-location">Graduated Aug 2022</div>
+                    <div class="date-location">
+                        <div>Aug 2022</div>
+                        <div>GPA: 3.82</div>
+                    </div>
+                </div>
+                <span class="hover-hint">Hover to expand details</span>
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>Academic Excellence:</u> Graduated with Distinction in Mathematics. Received Admission with Distinction, the Westcott Scholarship, the Mathematics Memorial Scholarship, and a Full Tuition Waiver.</li>
+                        <li><u>Senior Thesis Research:</u> Completed and defended a senior project proving the Heisenberg Uncertainty Principle via Fourier Analysis.</li>
+                        <li><u>Comprehensive Examination:</u> Passed the highly rigorous WWU Mathematics Comprehensive Exam on the first attempt, testing deep conceptual understanding across multi-variable calculus, linear algebra, and differential equations.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resume-item">
+                <div class="resume-header">
+                    <div>
+                        <div class="role-title">A.A. Direct Transfer Degree, Mathematics</div>
+                        <div class="company-name">Clark College</div>
+                    </div>
+                    <div class="date-location">
+                        <div>Jun 2019</div>
+                        <div>GPA: 3.8</div>
+                    </div>
+                </div>
+                <span class="hover-hint">Hover to expand details</span>
+                <div class="job-details">
+                    <ul class="resume-bullets">
+                        <li><u>Accelerated Track:</u> Completed rigorous college-level engineering, physics, and calculus coursework concurrently during high school via the Running Start Program.</li>
+                        <li><u>Honors & Awards:</u> Graduated with Honors. Achieved 4 Terms on the Vice President’s List (Honor Roll) and membership in the Phi Theta Kappa Honor Society.</li>
+                    </ul>
                 </div>
             </div>
 
@@ -350,64 +444,41 @@
                         <div class="role-title">Actuarial Credentials</div>
                         <div class="company-name">Society of Actuaries (SOA)</div>
                     </div>
-                    <div class="date-location">Certified Candidate</div>
+                    <div class="date-location">Passed 2023</div>
                 </div>
-                <div class="badge-container" style="margin-top: 5px;">
-                    <span class="badge">Exam P (Probability)</span>
-                    <span class="badge">Exam FM (Financial Mathematics)</span>
+                <div class="badge-container" style="margin-top: 8px;">
+                    <span class="badge">Exam P (Probability) - Jul 2023</span>
+                    <span class="badge">Exam FM (Financial Mathematics) - Aug 2023</span>
                 </div>
             </div>
+
         </section>
 
-        <!-- ================= TAB: PORTFOLIO ================= -->
         <section id="portfolio" class="tab-content">
-            <h1>Interactive Projects</h1>
-            <p class="subtitle">Demos showcasing live algorithmic optimization and dashboard engines.</p>
+            <h1>Completed Projects</h1>
+            <p class="subtitle">A selection of rigorous academic research and technical documentation.</p>
 
-            <div class="portfolio-grid">
-                <!-- Sandbox 1 -->
-                <div class="project-card">
-                    <h3>1. SQL HANA Demand Forecasting Simulator</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 5px;">
-                        An implementation mirroring the logic used to project inventory movements across 300+ SKUs.
+            <div class="resume-item" style="padding: 0; overflow: hidden;">
+                <div style="padding: 24px; border-bottom: 1px solid var(--border-color);">
+                    <h3 style="font-size: 18px; font-weight: 600;">Proving the Heisenberg Uncertainty Principle via Fourier Analysis</h3>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">
+                        Senior Thesis Research Project | Western Washington University
                     </p>
-                    <div class="demo-sandbox">
-                        <strong>[ Sandbox Environment Under Construction ]</strong><br>
-                        <span style="font-size: 11px; display: inline-block; margin-top: 5px;">
-                            Next Step: Integrating dynamic JavaScript sliders to simulate real-time safety stock variance.
-                        </span>
-                    </div>
                 </div>
-
-                <!-- Sandbox 2 -->
-                <div class="project-card">
-                    <h3>2. West Coast Distribution Optimization Model</h3>
-                    <p style="color: var(--text-secondary); font-size: 14px; margin-top: 5px;">
-                        A linear programming visualization calculating mathematical minimum-cost routing across coastal transit networks.
-                    </p>
-                    <div class="demo-sandbox">
-                        <strong>[ Sandbox Environment Under Construction ]</strong><br>
-                        <span style="font-size: 11px; display: inline-block; margin-top: 5px;">
-                            Next Step: Embedding HTML Canvas node layouts to display fluid optimization paths.
-                        </span>
-                    </div>
-                </div>
+                <iframe class="pdf-viewer" src="senior_project.pdf" title="Senior Thesis PDF Viewer"></iframe>
             </div>
+            
         </section>
 
     </main>
 
-    <!-- Simple Tab Swapping Logic -->
     <script>
         function switchTab(tabId) {
-            // Deactivate all sections and buttons
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             
-            // Activate target elements
             document.getElementById(tabId).classList.add('active');
             
-            // Find button matching text target to highlight active state
             const buttons = document.querySelectorAll('.tab-btn');
             buttons.forEach(btn => {
                 if(btn.getAttribute('onclick').includes(tabId)) {
@@ -415,7 +486,6 @@
                 }
             });
 
-            // Scroll cleanly to the top of the content framework window
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>

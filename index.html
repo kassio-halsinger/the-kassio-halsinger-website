@@ -211,6 +211,17 @@
         .resume-bullets { padding-left: 18px; font-size: 14px; color: #333336; }
         .resume-bullets li { margin-bottom: 12px; line-height: 1.6; }
         .resume-bullets u { font-weight: 600; text-decoration-thickness: 1px; text-underline-offset: 2px; }
+        
+        .review-quote {
+            display: inline-block;
+            background: #f5f5f7;
+            padding: 8px 12px;
+            border-left: 3px solid var(--accent-blue);
+            margin-top: 6px;
+            font-style: italic;
+            font-size: 13px;
+            color: #515154;
+        }
 
         /* Badges */
         .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
@@ -250,7 +261,6 @@
 </head>
 <body>
 
-    <!-- Sticky Navigation Bar -->
     <nav>
         <div class="nav-container">
             <div class="nav-brand" onclick="switchTab('about')">Kassio Halsinger</div>
@@ -263,7 +273,6 @@
     </nav>
 
     <main>
-        <!-- ================= TAB: ABOUT ================= -->
         <section id="about" class="tab-content active">
             <h1>Kassio Halsinger</h1>
             <p class="subtitle">Technical Project Lead & Data Analyst</p>
@@ -277,19 +286,16 @@
             </div>
         </section>
 
-        <!-- ================= TAB: RESUME ================= -->
         <section id="resume" class="tab-content">
             <h1>Professional Journey</h1>
             <p class="subtitle">An overview of experience, education, and analytical foundations.</p>
 
-            <!-- Sub-Navigation for Resume -->
             <div class="sub-nav-tabs">
                 <button class="sub-tab-btn active" onclick="switchSubTab('resume-professional')">Professional Experience</button>
-                <button class="sub-tab-btn" onclick="switchSubTab('resume-tutoring')">Tutoring Experience</button>
+                <button class="sub-tab-btn" onclick="switchSubTab('resume-tutoring')">Instruction & Leadership</button>
                 <button class="sub-tab-btn" onclick="switchSubTab('resume-education')">Education & Coursework</button>
             </div>
 
-            <!-- SUB-TAB: PROFESSIONAL EXPERIENCE -->
             <div id="resume-professional" class="sub-tab-content active">
                 <div class="resume-item">
                     <div class="resume-header">
@@ -373,28 +379,138 @@
                 </div>
             </div>
 
-            <!-- SUB-TAB: TUTORING EXPERIENCE -->
             <div id="resume-tutoring" class="sub-tab-content">
+                
+                <div class="resume-item" style="background-color: #f0f7ff; border: 1px solid #cce4ff;">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <h3 style="font-size: 15px; font-weight: 600; color: var(--accent-blue);">Proven Track Record of Technical Communication</h3>
+                            <p style="font-size: 13px; color: #515154; margin-top: 4px;">My background in mathematics instruction proves my ability to translate highly complex data into intuitive, actionable insights for non-technical stakeholders.</p>
+                        </div>
+                        <a href="https://www.facebook.com/learnwithmastermath/reviews" target="_blank" style="background: var(--accent-blue); color: white; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-size: 12px; font-weight: 600; white-space: nowrap; margin-left: 15px;">View Verified Reviews ↗</a>
+                    </div>
+                </div>
+
                 <div class="resume-item">
                     <div class="resume-header">
                         <div>
-                            <div class="role-title">Instruction & Tutoring Roles</div>
-                            <div class="company-name">Various Institutions</div>
+                            <div class="role-title">Advanced Mathematics Instructor & Curriculum Writer</div>
+                            <div class="company-name">MMT Prep</div>
                         </div>
                         <div class="date-location">
-                            <div>Prior to 2024</div>
+                            <div>Dec 2023 – Apr 2024</div>
                         </div>
                     </div>
                     <span class="hover-hint">Hover to expand details</span>
                     <div class="job-details">
                         <ul class="resume-bullets">
-                            <li><u>Educational Leadership:</u> Comprehensive details regarding specialized instruction, complex concept translation, and tutoring experience will be populated here as requested.</li>
+                            <li><u>Statistical Curriculum Development:</u> Authored hundreds of complex problems and robust solutions for the "DIGITAL SAT MATH: Advanced" textbook, translating high-level concepts into digestible frameworks.</li>
+                            <li><u>Subject Matter Expertise:</u> Maintained rigorous fluency across all mathematical domains through IB Calculus and AP Statistics. Functioned as the definitive analytical authority, operating under a mandate to resolve every complex inquiry without fail.</li>
+                            <li><u>Instructional Leadership:</u> Managed and directed up to 20 intensive, two-hour sessions, catering to diverse learning paces and optimizing individual performance metrics.</li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">Technical Writing</span>
+                        <span class="badge">AP Statistics</span>
+                        <span class="badge">Problem Solving</span>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Independent Mathematics Consultant & Tutor</div>
+                            <div class="company-name">Self-Employed / Freelance</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Sep 2017 – Dec 2023</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Technical Translation:</u> Consistently praised for the ability to translate dense, highly technical concepts into easily understandable frameworks for diverse audiences.
+                                <span class="review-quote">"He knows everything that you will ever need to know about math, and explains it in a concise, easily understandable way." — University Calculus Client</span>
+                            </li>
+                            <li><u>Intuitive Data Visualization:</u> Leveraged remote collaboration tools (Wacom tablets, live screen-sharing) to bridge geographical barriers and communicate complex logic visually.
+                                <span class="review-quote">"Taught me so much material through intuitive visuals and work problems." — Biochemistry Major Client</span>
+                            </li>
+                            <li><u>Stakeholder Communication & Thoroughness:</u> Focused on achieving root-cause comprehension rather than surface-level task completion, fostering high trust with clients.
+                                <span class="review-quote">"Took the time to ensure he explained it and was very thorough... After every session my son felt relief and that he understood what he was doing." — Client Parent</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">Client Management</span>
+                        <span class="badge">Data Visualization</span>
+                        <span class="badge">Remote Collaboration</span>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Math Fellow & Peer Mentor</div>
+                            <div class="company-name">Western Washington University Math Center</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Sep 2020 – Aug 2022</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Advanced Computational Logic:</u> Served as a premier tutor for Calculus and upper-division mathematics, designated as the most qualified instructor across the university's broadest range of high-level courses.</li>
+                            <li><u>Peer Leadership:</u> Acted as the primary technical escalation point for other instructors, resolving complex mathematical models that outpaced the standard curriculum.</li>
+                        </ul>
+                    </div>
+                    <div class="badge-container">
+                        <span class="badge">Peer Mentorship</span>
+                        <span class="badge">Advanced Calculus</span>
+                        <span class="badge">Escalation Resolution</span>
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Contracted Mathematics Instructor</div>
+                            <div class="company-name">KnowledgeQuest & Creating Brighter Minds Tutoring</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Sep 2018 – Dec 2023</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Market Value & Negotiation:</u> Recognized as a premium analytical asset. Successfully negotiated compensation above credentialed pedagogues due to exclusive capabilities in teaching advanced Statistics.</li>
+                            <li><u>Competitive Acquisition:</u> Specifically targeted and recruited by agency ownership at a premium rate to leverage my independent market reputation and drive organizational growth.</li>
                         </ul>
                     </div>
                 </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Olympiad Instructor & Digital Educator</div>
+                            <div class="company-name">Fairhaven HS & Varsity Tutors</div>
+                        </div>
+                        <div class="date-location">
+                            <div>Sep 2019 – Jan 2020</div>
+                        </div>
+                    </div>
+                    <span class="hover-hint">Hover to expand details</span>
+                    <div class="job-details">
+                        <ul class="resume-bullets">
+                            <li><u>Project Management & Competitive Success:</u> Designed end-to-end course structures and authored original lessons for the 7th/8th Grade Math Olympiad team, leading the cohort to multiple competitive awards.</li>
+                            <li><u>Proactive Technical Adaptation:</u> Mastered digital education platforms and remote collaboration hardware well ahead of industry trends, enabling seamless virtual instruction.</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
 
-            <!-- SUB-TAB: EDUCATION -->
             <div id="resume-education" class="sub-tab-content">
                 
                 <div class="resume-item" style="padding-bottom: 12px; margin-bottom: 0; box-shadow: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none;">
@@ -424,7 +540,6 @@
                 <p style="font-size: 14px; color: var(--text-secondary);">A selection of rigorous academic classes and how their mathematical principles translate directly to modern data science and operational efficiency.</p>
                 
                 <div class="course-grid">
-                    <!-- Core Analytical Courses -->
                     <div class="course-card">
                         <div class="course-header">
                             <div class="course-title">MATH 304 & 215: Linear Algebra</div>
@@ -532,7 +647,6 @@
             </div>
         </section>
 
-        <!-- ================= TAB: PORTFOLIO ================= -->
         <section id="portfolio" class="tab-content">
             <h1>Completed Projects</h1>
             <p class="subtitle">A selection of rigorous academic research and technical documentation.</p>
@@ -554,7 +668,6 @@
                     </div>
                 </div>
                 
-                <!-- Independent PDF Viewer -->
                 <iframe class="pdf-viewer" src="senior_project.pdf" title="Senior Thesis PDF Viewer" style="border: none;"></iframe>
             </div>
         </section>

@@ -227,7 +227,20 @@
         .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
         .badge { background: #f5f5f7; color: #515154; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 500; }
 
-        /* Portfolio */
+        .award-badge {
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f0fa 100%);
+            border: 1px solid #cce4ff;
+            color: var(--accent-blue);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        /* Portfolio & Alerts */
         .portfolio-summary {
             background: #f0f7ff;
             border: 1px solid #cce4ff;
@@ -235,6 +248,17 @@
             padding: 24px;
             margin-bottom: 24px;
         }
+
+        .callout-box {
+            background: #fafafc;
+            border-left: 4px solid var(--accent-blue);
+            padding: 16px 20px;
+            margin: 16px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .callout-title { font-weight: 600; font-size: 15px; color: #1d1d1f; margin-bottom: 4px; }
+        .callout-text { font-size: 14px; color: #515154; line-height: 1.5; }
 
         .pdf-viewer {
             width: 100%;
@@ -281,7 +305,7 @@
                     I specialize in bridging the gap between rigorous mathematical optimization and stable, scalable enterprise systems. 
                 </p>
                 <p style="font-size: 15px; color: var(--text-secondary);">
-                    With a background rooted in Applied Mathematics, Computer Science, and risk management frameworks, I transform complex data architectures into intuitive, automated tools that drive concrete supply chain and operational efficiencies.
+                    With a background rooted in a dual major of Applied Mathematics and Computer Science alongside risk management frameworks, I transform complex data architectures into intuitive, automated tools that drive concrete supply chain and operational efficiencies.
                 </p>
             </div>
         </section>
@@ -294,6 +318,7 @@
                 <button class="sub-tab-btn active" onclick="switchSubTab('resume-professional')">Professional Experience</button>
                 <button class="sub-tab-btn" onclick="switchSubTab('resume-tutoring')">Instruction & Leadership</button>
                 <button class="sub-tab-btn" onclick="switchSubTab('resume-education')">Education & Coursework</button>
+                <button class="sub-tab-btn" onclick="switchSubTab('resume-certifications')">Actuarial Credentials</button>
             </div>
 
             <div id="resume-professional" class="sub-tab-content active">
@@ -380,7 +405,6 @@
             </div>
 
             <div id="resume-tutoring" class="sub-tab-content">
-                
                 <div class="resume-item" style="background-color: #f0f7ff; border: 1px solid #cce4ff;">
                     <div style="display: flex; align-items: center; justify-content: space-between;">
                         <div>
@@ -464,11 +488,6 @@
                             <li><u>Peer Leadership:</u> Acted as the primary technical escalation point for other instructors, resolving complex mathematical models that outpaced the standard curriculum.</li>
                         </ul>
                     </div>
-                    <div class="badge-container">
-                        <span class="badge">Peer Mentorship</span>
-                        <span class="badge">Advanced Calculus</span>
-                        <span class="badge">Escalation Resolution</span>
-                    </div>
                 </div>
 
                 <div class="resume-item">
@@ -489,46 +508,41 @@
                         </ul>
                     </div>
                 </div>
-
-                <div class="resume-item">
-                    <div class="resume-header">
-                        <div>
-                            <div class="role-title">Olympiad Instructor & Digital Educator</div>
-                            <div class="company-name">Fairhaven HS & Varsity Tutors</div>
-                        </div>
-                        <div class="date-location">
-                            <div>Sep 2019 – Jan 2020</div>
-                        </div>
-                    </div>
-                    <span class="hover-hint">Hover to expand details</span>
-                    <div class="job-details">
-                        <ul class="resume-bullets">
-                            <li><u>Project Management & Competitive Success:</u> Designed end-to-end course structures and authored original lessons for the 7th/8th Grade Math Olympiad team, leading the cohort to multiple competitive awards.</li>
-                            <li><u>Proactive Technical Adaptation:</u> Mastered digital education platforms and remote collaboration hardware well ahead of industry trends, enabling seamless virtual instruction.</li>
-                        </ul>
-                    </div>
-                </div>
-
             </div>
 
             <div id="resume-education" class="sub-tab-content">
                 
-                <div class="resume-item" style="padding-bottom: 12px; margin-bottom: 0; box-shadow: none; border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: none;">
+                <div class="resume-item">
                     <div class="resume-header">
                         <div>
-                            <div class="role-title">B.S. Mathematics/Computer Science & Applied Mathematics</div>
+                            <div class="role-title">B.S. Double Major: Applied Mathematics AND Mathematics/Computer Science</div>
                             <div class="company-name">Western Washington University (WWU) | GPA: 3.82 | Graduated Aug 2022</div>
                         </div>
                     </div>
-                    <div style="margin-top: 10px; font-size: 13px; color: var(--text-secondary);">
-                        Graduated with Distinction in Mathematics. Completed Senior Thesis Research proving the Heisenberg Uncertainty Principle via Fourier Analysis. Passed the rigorous WWU Mathematics Comprehensive Exam on the first attempt.
+                    
+                    <div class="callout-box">
+                        <div class="callout-title">The Dual-Major Advantage</div>
+                        <div class="callout-text">
+                            Unlike a traditional Computer Science degree focused purely on software engineering, or a solo Applied Math degree focused purely on theory, this dual-focus bridges rigorous mathematical optimization with computational scalability. It provides the unique capability to not only write operational code, but to deeply understand and manipulate the complex statistical and optimization algorithms running beneath it.
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <span class="award-badge">🏆 Westcott Scholarship</span>
+                        <span class="award-badge">🏆 Mathematics Memorial Scholarship</span>
+                        <span class="award-badge">🏆 Full Tuition Waiver</span>
+                    </div>
+                    
+                    <div style="font-size: 13px; color: var(--text-secondary); margin-top: 8px;">
+                        <strong>Merit & Recognition:</strong> Securing all three of these highly competitive, merit-based awards is exceptionally rare and reflects top-tier academic performance within the university's rigorous STEM programs. Graduated with Distinction in Mathematics and passed the WWU Mathematics Comprehensive Exam on the first attempt.
                     </div>
                 </div>
-                <div class="resume-item" style="padding-top: 0; box-shadow: none; border-top-left-radius: 0; border-top-right-radius: 0; border-top: none;">
-                     <div class="resume-header" style="margin-top: 16px; border-top: 1px solid var(--border-color); padding-top: 16px;">
+
+                <div class="resume-item">
+                     <div class="resume-header">
                         <div>
                             <div class="role-title">A.A. Direct Transfer Degree, Mathematics</div>
-                            <div class="company-name">Clark College | GPA: 3.84 | Graduated Jun 2019</div>
+                            <div class="company-name">Clark College | GPA: 3.8 | Graduated Jun 2019</div>
                         </div>
                     </div>
                     <div style="margin-top: 10px; font-size: 13px; color: var(--text-secondary);">
@@ -569,7 +583,7 @@
                         </div>
                         <span class="hover-hint">Hover for data analysis relevance</span>
                         <div class="course-details">
-                            <p><strong>Relevance to Data Analysis:</strong> Teaches how to evaluate computational efficiency. In an enterprise environment, this ensures that the data engines and scripts I build (like SQL queries or Python scripts) run in seconds rather than crashing the system when scaling to millions of rows.</p>
+                            <p><strong>Relevance to Data Analysis:</strong> Teaches how to evaluate computational efficiency. In an enterprise environment, this ensures that the data engines and scripts I build run in seconds rather than crashing the system when scaling to millions of rows.</p>
                         </div>
                     </div>
 
@@ -580,18 +594,7 @@
                         </div>
                         <span class="hover-hint">Hover for data analysis relevance</span>
                         <div class="course-details">
-                            <p><strong>Relevance to Data Analysis:</strong> The bedrock of risk management and predictive modeling. This coursework provided the deep statistical intuition required to pass Actuarial exams and allows me to build forecasting models that accurately account for uncertainty and variance in the real world.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card">
-                        <div class="course-header">
-                            <div class="course-title">MATH 221: Differential Equations</div>
-                            <div class="course-grade">A</div>
-                        </div>
-                        <span class="hover-hint">Hover for data analysis relevance</span>
-                        <div class="course-details">
-                            <p><strong>Relevance to Data Analysis:</strong> Useful for modeling continuous changes over time, such as tracking inventory velocity, modeling financial decay, and predicting dynamic system behavior in changing markets.</p>
+                            <p><strong>Relevance to Data Analysis:</strong> The bedrock of risk management and predictive modeling. This coursework provided the deep statistical intuition required to pass Actuarial exams and allows me to build forecasting models that accurately account for uncertainty and variance.</p>
                         </div>
                     </div>
 
@@ -605,45 +608,52 @@
                             <p><strong>Relevance to Data Analysis:</strong> Ensures that the automated tools and software architectures I build are stable, modular, and maintainable. It bridges the gap between writing a one-off "hacky" script and developing reliable enterprise software.</p>
                         </div>
                     </div>
-
-                    <div class="course-card">
-                        <div class="course-header">
-                            <div class="course-title">MATH 307 & M/CS 375: Math Computing</div>
-                            <div class="course-grade">A / A-</div>
-                        </div>
-                        <span class="hover-hint">Hover for data analysis relevance</span>
-                        <div class="course-details">
-                            <p><strong>Relevance to Data Analysis:</strong> Hands-on experience executing complex mathematical modeling using computational software. This is the direct precursor to doing heavy data extraction, transformation, and numerical visualization in languages like Python.</p>
-                        </div>
-                    </div>
-
-                    <div class="course-card">
-                        <div class="course-header">
-                            <div class="course-title">Calculus Sequence (I-IV, Limits)</div>
-                            <div class="course-grade">A / A-</div>
-                        </div>
-                        <span class="hover-hint">Hover for data analysis relevance</span>
-                        <div class="course-details">
-                            <p><strong>Relevance to Data Analysis:</strong> Multi-variable calculus (Math 254/226) is the foundational mechanic for "gradient descent," which is how machine learning models and predictive algorithms train themselves to find the most accurate answers by minimizing errors over time.</p>
-                        </div>
-                    </div>
                 </div>
+            </div>
 
-                <h3 style="font-size: 18px; font-weight: 600; margin: 40px 0 10px 0;">Broad Interdisciplinary Coursework</h3>
-                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 20px;">A selection of diverse academic classes demonstrating well-rounded capabilities in physical sciences, communication, and humanities.</p>
+            <div id="resume-certifications" class="sub-tab-content">
                 
-                <div style="column-count: 2; column-gap: 40px; font-size: 13px; color: #333;">
-                    <ul style="list-style-type: none; padding: 0;">
-                        <li style="margin-bottom: 8px;"><strong>PHYS 162, 231-242:</strong> Engineering Physics Sequence <span style="color: var(--accent-blue);">(A / B+)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>CHEM 141-151:</strong> General Chemistry & Lab <span style="color: var(--accent-blue);">(A / A-)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>ENGR 107, 109, 208, 214:</strong> Aerospace & Engineering <span style="color: var(--accent-blue);">(A / B)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>ECON 201:</strong> Micro Economics <span style="color: var(--accent-blue);">(A)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>CMST 230:</strong> Small Group Communication <span style="color: var(--accent-blue);">(A)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>ENGL 101, 102, 262:</strong> Comp. & World Literature <span style="color: var(--accent-blue);">(A / A-)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>HIST 214 & SOC 101:</strong> History & Sociology <span style="color: var(--accent-blue);">(A)</span></li>
-                        <li style="margin-bottom: 8px;"><strong>MUSC 135, 195-297:</strong> Jazz Ensemble & Appreciation <span style="color: var(--accent-blue);">(A)</span></li>
-                    </ul>
+                <div class="resume-item" style="background-color: #f0f7ff; border: 1px solid #cce4ff;">
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between;">
+                        <div>
+                            <h3 style="font-size: 18px; font-weight: 600; color: var(--accent-blue);">Accelerated Dual-Credential Achievement</h3>
+                            <p style="font-size: 14px; color: #515154; margin-top: 8px; line-height: 1.5;">
+                                Passed <strong>SOA Exam P</strong> (July 2023) and <strong>SOA Exam FM</strong> (August 2023) consecutively within a two-month span. Successfully mastering this volume of highly technical material typically requires candidates to dedicate 500 to 700 hours of intensive study over 6 to 12 months. Completing both credentials with only three months of total preparation demonstrates an exceptional capacity for rapid learning, analytical synthesis, and mastery of complex statistical models.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Society of Actuaries (SOA) Exam P – Probability</div>
+                            <div class="company-name">Passed July 2023</div>
+                        </div>
+                        <a href="https://www.soa.org/education/exam-req/edu-exam-p-detail/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 13px; font-weight: 500;">View Official Syllabus ↗</a>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #333336;">
+                        <strong>Syllabus Focus:</strong> Fundamentals of quantitative risk assessment. Topics encompass general discrete mathematics, univariate and multivariate random variables, conditional probabilities, variance and standard deviation of payment models, and the Central Limit Theorem.
+                        <br><br>
+                        <strong>What this signifies for Data Analysis:</strong> Proves an elite capability to mathematically evaluate uncertainty and build rigorous predictive statistical models. This foundational knowledge is essential for constructing accurate demand forecasts, assessing risk in supply chains, and parsing real-world datasets with high variance.
+                    </div>
+                </div>
+
+                <div class="resume-item">
+                    <div class="resume-header">
+                        <div>
+                            <div class="role-title">Society of Actuaries (SOA) Exam FM – Financial Mathematics</div>
+                            <div class="company-name">Passed August 2023</div>
+                        </div>
+                        <a href="https://www.soa.org/education/exam-req/edu-exam-fm-detail/" target="_blank" style="color: var(--accent-blue); text-decoration: none; font-size: 13px; font-weight: 500;">View Official Syllabus ↗</a>
+                    </div>
+                    <div style="margin-top: 15px; font-size: 14px; color: #333336;">
+                        <strong>Syllabus Focus:</strong> Advanced concepts of calculating present, current, and accumulated values for streams of cash flows. Topics encompass complex loan amortization, bond valuation (premium/discount accumulation), yield curves, and Asset/Liability Management (Redington and full immunization).
+                        <br><br>
+                        <strong>What this signifies for Data & Financial Analysis:</strong> Demonstrates a master-level understanding of the time value of money, capital budgeting, and investment income structures. This ensures that any operational dashboard, ERP customization, or automated pipeline I build is grounded in mathematically flawless financial logic.
+                    </div>
+                </div>
+
             </div>
         </section>
 
